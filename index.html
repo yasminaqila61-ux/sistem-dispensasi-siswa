@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-DISPEN SMAN 1 Magetan - Nuansa Maroon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+
+        :root {
+            --maroon-primary: #630000;
+            --maroon-dark: #410000;
+            --maroon-light: #8b0000;
+            --stone-bg: #faf7f7;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--stone-bg);
+            color: #2d2a2a;
+            scroll-behavior: smooth;
+        }
+
+        .maroon-gradient {
+            background: linear-gradient(135deg, var(--maroon-primary) 0%, var(--maroon-dark) 100%);
+        }
+
+        .maroon-soft-bg {
+            background-color: #fff1f1;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--maroon-primary);
+        }
+
+        .status-pill {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--maroon-primary);
+            border-radius: 10px;
+        }
+
+        /* Animations */
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid #fff;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+
+        .hover-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-red-900 selection:text-white">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 glass-panel shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 maroon-gradient rounded-2xl flex items-center justify-center text-white shadow-lg border-2 border-white/20">
+                    <i data-lucide="award" class="w-7 h-7"></i>
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-2xl tracking-tighter text-red-950 leading-none uppercase">E-DISPEN</h1>
+                    <span class="text-[10px] font-bold text-red-700 tracking-[0.2em] uppercase">SMAN 1 Magetan</span>
+                </div>
+            </div>
+            
+            <nav class="hidden md:flex gap-8 text-sm font-bold text-stone-600 uppercase tracking-widest">
+                <a href="#overview" class="hover:text-red-900 transition-colors">Ringkasan</a>
+                <a href="#simulator" class="hover:text-red-900 transition-colors">Simulator</a>
+                <a href="#analytics" class="hover:text-red-900 transition-colors">Analisis</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button onclick="window.print()" class="p-2.5 rounded-xl bg-stone-100 text-maroon-900 hover:bg-maroon-primary hover:text-white transition-all shadow-sm" title="Cetak Laporan">
+                    <i data-lucide="printer" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-32">
+
+        <!-- Section: Hero/Overview -->
+        <section id="overview" class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl maroon-soft-bg border border-red-200 text-red-900 text-[11px] font-black uppercase tracking-widest shadow-sm">
+                    <span class="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse"></span>
+                    Sistem Digital Terpadu 2024
+                </div>
+                <h2 class="text-5xl md:text-7xl font-black text-stone-900 tracking-tight leading-[1.05]">
+                    Transformasi <br><span class="text-red-900 italic font-extrabold">Digital Kesiswaan</span>
+                </h2>
+                <p class="text-lg text-stone-600 leading-relaxed text-justify border-l-4 border-red-900 pl-6 bg-white/50 py-4 rounded-r-2xl">
+                    Mewujudkan tata kelola administrasi kesiswaan yang modern di SMAN 1 Magetan. E-DISPEN hadir sebagai solusi satu pintu untuk memangkas birokrasi perizinan yang konvensional menjadi serba digital dan transparan.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#simulator" class="px-8 py-4 maroon-gradient text-white font-bold rounded-2xl shadow-xl hover:scale-105 active:scale-95 transition-all">Mulai Simulasi</a>
+                    <div class="flex -space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-stone-200 border-2 border-white flex items-center justify-center text-[10px] font-bold">SM</div>
+                        <div class="w-10 h-10 rounded-full bg-red-100 border-2 border-white flex items-center justify-center text-[10px] font-bold text-red-900">GA</div>
+                        <div class="w-10 h-10 rounded-full bg-stone-300 border-2 border-white flex items-center justify-center text-[10px] font-bold">+1k</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="relative group">
+                <div class="absolute -inset-4 bg-red-900/5 rounded-[3rem] blur-2xl transition-all group-hover:bg-red-900/10"></div>
+                <div class="relative bg-white p-10 rounded-[2.5rem] border border-stone-200 shadow-2xl space-y-10">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-black text-red-950 text-xl flex items-center gap-3">
+                            <i data-lucide="zap" class="fill-red-900 text-red-900 w-6 h-6"></i>
+                            Kinerja Sistem
+                        </h3>
+                        <span class="text-[10px] bg-green-100 text-green-700 font-bold px-3 py-1 rounded-full uppercase">Optimal</span>
+                    </div>
+                    <div class="grid gap-6">
+                        <div class="p-6 rounded-2xl maroon-soft-bg border border-red-100 flex gap-6 hover:bg-red-50 transition-colors">
+                            <div class="text-3xl font-black text-red-900/20 italic">01</div>
+                            <div>
+                                <h4 class="font-bold text-stone-800">Smart Authentication</h4>
+                                <p class="text-xs text-stone-500 mt-2 leading-relaxed">Verifikasi NIS instan melalui sinkronisasi database server kesiswaan.</p>
+                            </div>
+                        </div>
+                        <div class="p-6 rounded-2xl bg-stone-50 border border-stone-200 flex gap-6 hover:bg-white transition-colors">
+                            <div class="text-3xl font-black text-stone-300 italic">02</div>
+                            <div>
+                                <h4 class="font-bold text-stone-800">Cloud Real-time Sync</h4>
+                                <p class="text-xs text-stone-500 mt-2 leading-relaxed">Penyimpanan data aman berbasis cloud dengan akses instan bagi guru piket.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Simulator -->
+        <section id="simulator" class="space-y-12">
+            <div class="text-center space-y-4 max-w-2xl mx-auto">
+                <h3 class="text-4xl font-black text-stone-900 tracking-tight">E-DISPEN Lab Simulator</h3>
+                <p class="text-stone-500 font-medium">Uji coba pengiriman data langsung ke infrastruktur Google Apps Script.</p>
+                <div class="h-1.5 w-24 bg-red-900 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <!-- User Entry Form -->
+                <div class="bg-white rounded-[2.5rem] border border-stone-200 shadow-xl overflow-hidden hover-card">
+                    <div class="p-8 maroon-gradient text-white flex justify-between items-center">
+                        <div>
+                            <h4 class="font-black text-2xl uppercase tracking-tighter">Entry Point</h4>
+                            <p class="text-red-200 text-xs font-bold opacity-80">Formulir Pengajuan Digital</p>
+                        </div>
+                        <i data-lucide="file-text" class="w-10 h-10 opacity-20"></i>
+                    </div>
+                    
+                    <div class="p-10 space-y-6">
+                        <div id="feedback-message" class="hidden p-4 rounded-2xl text-sm font-bold animate-bounce"></div>
+                        
+                        <div class="space-y-5">
+                            <div class="relative">
+                                <label for="sim-nama" class="sr-only">Nama Lengkap</label>
+                                <input type="text" id="sim-nama" placeholder="Nama Lengkap Siswa" 
+                                    class="w-full px-6 py-4 rounded-2xl border border-stone-200 bg-stone-50 outline-none focus:border-red-900 focus:bg-white focus:ring-4 focus:ring-red-900/5 transition-all text-sm font-semibold">
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="relative">
+                                    <label for="sim-nis" class="sr-only">NIS</label>
+                                    <input type="text" id="sim-nis" placeholder="NIS" 
+                                        class="w-full px-6 py-4 rounded-2xl border border-stone-200 bg-stone-50 outline-none focus:border-red-900 focus:bg-white focus:ring-4 focus:ring-red-900/5 transition-all text-sm font-semibold">
+                                </div>
+                                <div class="relative">
+                                    <label for="sim-kelas" class="sr-only">Kelas</label>
+                                    <input type="text" id="sim-kelas" placeholder="Kelas (Contoh: X-1)" 
+                                        class="w-full px-6 py-4 rounded-2xl border border-stone-200 bg-stone-50 outline-none focus:border-red-900 focus:bg-white focus:ring-4 focus:ring-red-900/5 transition-all text-sm font-semibold">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="space-y-1">
+                                    <label for="sim-berangkat" class="text-[10px] font-bold text-stone-400 uppercase tracking-widest ml-4">Jam Berangkat</label>
+                                    <input type="time" id="sim-berangkat" 
+                                        class="w-full px-6 py-4 rounded-2xl border border-stone-200 bg-stone-50 outline-none focus:border-red-900 focus:bg-white focus:ring-4 focus:ring-red-900/5 transition-all text-sm font-semibold">
+                                </div>
+                                <div class="space-y-1">
+                                    <label for="sim-pulang" class="text-[10px] font-bold text-stone-400 uppercase tracking-widest ml-4">Jam Pulang</label>
+                                    <input type="time" id="sim-pulang" 
+                                        class="w-full px-6 py-4 rounded-2xl border border-stone-200 bg-stone-50 outline-none focus:border-red-900 focus:bg-white focus:ring-4 focus:ring-red-900/5 transition-all text-sm font-semibold">
+                                </div>
+                            </div>
+
+                            <div class="relative">
+                                <label for="sim-alasan" class="sr-only">Alasan</label>
+                                <textarea id="sim-alasan" placeholder="Alasan Keperluan Dispensasi..." rows="3" 
+                                    class="w-full px-6 py-4 rounded-2xl border border-stone-200 bg-stone-50 outline-none focus:border-red-900 focus:bg-white focus:ring-4 focus:ring-red-900/5 transition-all text-sm font-semibold"></textarea>
+                            </div>
+                        </div>
+                        
+                        <button id="btn-submit" onclick="submitSim()" 
+                            class="w-full py-5 maroon-gradient text-white font-black rounded-2xl shadow-xl hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-4 group">
+                            <span id="btn-text" class="tracking-widest">KIRIM PENGAJUAN</span>
+                            <div id="btn-loader" class="spinner hidden"></div>
+                            <i data-lucide="send" id="btn-icon" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Admin Live View (UPDATED TO WHITE) -->
+                <div class="bg-white rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col border-[12px] border-stone-100 min-h-[560px] hover-card">
+                    <div class="p-8 border-b border-stone-100 bg-stone-50/50 flex justify-between items-center">
+                        <div>
+                            <h4 class="font-black text-red-950 text-xl tracking-tight uppercase italic">Monitoring Piket</h4>
+                            <p class="text-stone-400 text-[10px] font-bold uppercase tracking-widest mt-1">Live Database Feed</p>
+                        </div>
+                        <div class="flex flex-col items-end gap-1">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                                <span class="text-[10px] text-green-600 font-black uppercase tracking-widest">Connected</span>
+                            </div>
+                            <span class="text-[9px] text-stone-400 font-bold" id="current-time">--:--:--</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex-1 p-8 space-y-6 overflow-y-auto bg-stone-50/30" id="queue-container">
+                        <div id="empty-state" class="text-stone-300 text-center py-32 flex flex-col items-center gap-6">
+                            <div class="p-6 rounded-full bg-stone-100 border-2 border-stone-50">
+                                <i data-lucide="database" class="w-12 h-12 opacity-40"></i>
+                            </div>
+                            <span class="font-black uppercase text-xs tracking-[0.3em] opacity-50">Menunggu Inbound Data...</span>
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-stone-100 text-center">
+                        <p class="text-[9px] text-stone-400 font-bold uppercase tracking-widest">Auto-refresh aktif setiap transaksi</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Analytics -->
+        <section id="analytics" class="bg-white rounded-[3rem] border border-stone-200 shadow-2xl overflow-hidden">
+            <div class="p-12 border-b border-stone-100 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="space-y-2 text-center md:text-left">
+                    <h3 class="text-3xl font-black text-stone-900">Dashboard Statistik</h3>
+                    <p class="text-stone-500 font-medium">Visualisasi data penggunaan sistem tahun ajaran 2024/2025.</p>
+                </div>
+                <div class="p-2 bg-stone-100 rounded-2xl flex gap-2">
+                    <button class="px-6 py-2.5 rounded-xl bg-white shadow-sm text-red-900 font-bold text-xs uppercase transition-all">Mingguan</button>
+                    <button class="px-6 py-2.5 rounded-xl text-stone-400 font-bold text-xs uppercase hover:text-stone-600 transition-all">Bulanan</button>
+                </div>
+            </div>
+            
+            <div class="p-12 grid lg:grid-cols-2 gap-16">
+                <div class="space-y-6">
+                    <h4 class="font-black text-stone-800 flex items-center gap-3 text-sm uppercase tracking-widest">
+                        <i data-lucide="bar-chart" class="text-red-900"></i>
+                        Volume Per Jenjang
+                    </h4>
+                    <div class="h-[350px] w-full"><canvas id="classChart"></canvas></div>
+                </div>
+                <div class="space-y-6">
+                    <h4 class="font-black text-stone-800 flex items-center gap-3 text-sm uppercase tracking-widest">
+                        <i data-lucide="pie-chart" class="text-red-900"></i>
+                        Efektivitas Validasi
+                    </h4>
+                    <div class="h-[350px] w-full"><canvas id="statusChart"></canvas></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-stone-900 py-20 text-center">
+        <div class="max-w-7xl mx-auto px-4 space-y-8">
+            <div class="flex justify-center items-center gap-4 grayscale opacity-50">
+                <i data-lucide="shield-check" class="text-white"></i>
+                <div class="h-4 w-px bg-white/20"></div>
+                <i data-lucide="globe" class="text-white"></i>
+            </div>
+            <p class="text-stone-500 text-[10px] font-black uppercase tracking-[0.5em]">
+                &copy; 2024 SMAN 1 Magetan • Tim IT Kesiswaan • Built for Excellence
+              </p>
+        </div>
+    </footer>
+
+    <script>
+        // --- INITIALIZATION ---
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwpuyyxgWopf37hsrj1syDrdN_IGnK59WbH9wxghexkBCA5AJJ8eW0g0XFCrgztMm-EQw/exec";
+        
+        lucide.createIcons();
+
+        // Update Jam Real-time di Monitor
+        setInterval(() => {
+            const now = new Date();
+            const timeEl = document.getElementById('current-time');
+            if(timeEl) timeEl.textContent = now.toLocaleTimeString('id-ID');
+        }, 1000);
+
+        // --- CORE LOGIC: SUBMIT ---
+        async function submitSim() {
+            const fields = {
+                nama: document.getElementById('sim-nama'),
+                nis: document.getElementById('sim-nis'),
+                kelas: document.getElementById('sim-kelas'),
+                berangkat: document.getElementById('sim-berangkat'),
+                pulang: document.getElementById('sim-pulang'),
+                alasan: document.getElementById('sim-alasan')
+            };
+
+            let hasError = false;
+            Object.values(fields).forEach(f => {
+                if(!f.value) {
+                    f.classList.add('border-red-500', 'bg-red-50');
+                    hasError = true;
+                } else {
+                    f.classList.remove('border-red-500', 'bg-red-50');
+                }
+            });
+
+            if(hasError) {
+                showFeedback("Harap lengkapi seluruh data pengajuan!", "error");
+                return;
+            }
+
+            toggleLoading(true);
+
+            try {
+                const payload = {
+                    id: Date.now(),
+                    nama: fields.nama.value,
+                    kelas: fields.kelas.value,
+                    kontak: fields.nis.value,
+                    alasan: fields.alasan.value,
+                    berangkat: fields.berangkat.value,
+                    pulang: fields.pulang.value
+                };
+
+                const response = await fetch(WEB_APP_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "text/plain;charset=utf-8" },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.status === "success") {
+                    showFeedback("✅ Berhasil! Data telah tersinkronisasi ke server kesiswaan.", "success");
+                    addToQueue(payload);
+                    clearForm(fields);
+                } else {
+                    showFeedback("❌ Server Error: " + (result.message || "Gagal menyimpan data"), "error");
+                }
+            } catch (error) {
+                showFeedback("❌ Masalah Koneksi! Pastikan API Script sudah terpublikasi.", "error");
+                console.error(error);
+            } finally {
+                toggleLoading(false);
+            }
+        }
+
+        // --- UI HELPERS ---
+        function toggleLoading(isLoading) {
+            const btn = document.getElementById('btn-submit');
+            const text = document.getElementById('btn-text');
+            const loader = document.getElementById('btn-loader');
+            const icon = document.getElementById('btn-icon');
+
+            btn.disabled = isLoading;
+            if(isLoading) {
+                text.textContent = "SEDANG MENGIRIM...";
+                loader.classList.remove('hidden');
+                icon.classList.add('hidden');
+                btn.classList.add('opacity-80');
+            } else {
+                text.textContent = "KIRIM PENGAJUAN";
+                loader.classList.add('hidden');
+                icon.classList.remove('hidden');
+                btn.classList.remove('opacity-80');
+            }
+        }
+
+        function showFeedback(msg, type) {
+            const box = document.getElementById('feedback-message');
+            box.textContent = msg;
+            box.classList.remove('hidden', 'bg-red-100', 'text-red-900', 'bg-green-100', 'text-green-900');
+            
+            if(type === 'error') {
+                box.classList.add('bg-red-100', 'text-red-900');
+            } else {
+                box.classList.add('bg-green-100', 'text-green-900');
+            }
+
+            box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => box.classList.add('hidden'), 5000);
+        }
+
+        function addToQueue(item) {
+            const container = document.getElementById('queue-container');
+            const empty = document.getElementById('empty-state');
+            if(empty) empty.classList.add('hidden');
+
+            const div = document.createElement('div');
+            div.id = `req-${item.id}`;
+            div.className = "bg-white border border-stone-200 p-6 rounded-[1.5rem] space-y-4 hover:shadow-lg transition-all duration-500 transform translate-y-4 opacity-0";
+            
+            const timestamp = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+
+            div.innerHTML = `
+                <div class="flex justify-between items-start">
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-xl maroon-gradient flex items-center justify-center text-white font-black text-xs">
+                            ${item.nama.charAt(0)}
+                        </div>
+                        <div>
+                            <div class="text-stone-900 font-bold text-sm tracking-tight">${item.nama}</div>
+                            <div class="text-red-800 text-[10px] font-black uppercase tracking-widest mt-0.5">${item.kelas} • NIS: ${item.kontak}</div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-end gap-1">
+                        <span id="badge-${item.id}" class="status-pill bg-amber-100 text-amber-700">Pending</span>
+                        <div class="flex gap-2 text-[9px] font-black uppercase">
+                            <span class="text-green-600">IN: ${item.berangkat}</span>
+                            <span class="text-red-600">OUT: ${item.pulang}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 rounded-2xl bg-stone-50 border border-stone-100">
+                    <p class="text-stone-600 text-[11px] leading-relaxed italic">"${item.alasan}"</p>
+                </div>
+                <!-- Approval Controls -->
+                <div id="actions-${item.id}" class="flex gap-2 pt-2">
+                    <button onclick="updateStatus(${item.id}, 'approved')" class="flex-1 py-3 bg-green-600 hover:bg-green-700 text-white text-[10px] font-black rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-100">
+                        <i data-lucide="check-circle" class="w-3.5 h-3.5"></i> SETUJU
+                    </button>
+                    <button onclick="updateStatus(${item.id}, 'rejected')" class="flex-1 py-3 bg-stone-100 hover:bg-stone-200 text-stone-600 text-[10px] font-black rounded-xl transition-all flex items-center justify-center gap-2 border border-stone-200">
+                        <i data-lucide="x-circle" class="w-3.5 h-3.5"></i> TOLAK
+                    </button>
+                </div>
+            `;
+            
+            container.prepend(div);
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                div.classList.remove('translate-y-4', 'opacity-0');
+            }, 50);
+        }
+
+        function updateStatus(id, status) {
+            const badge = document.getElementById(`badge-${id}`);
+            const actions = document.getElementById(`actions-${id}`);
+            const card = document.getElementById(`req-${id}`);
+
+            if(status === 'approved') {
+                badge.className = "status-pill bg-green-100 text-green-700";
+                badge.textContent = "Approved";
+                card.classList.add('border-green-200');
+            } else {
+                badge.className = "status-pill bg-red-100 text-red-700";
+                badge.textContent = "Rejected";
+                card.classList.add('border-red-200');
+                card.style.opacity = '0.6';
+            }
+
+            // Remove buttons with animation
+            actions.style.height = '0px';
+            actions.style.overflow = 'hidden';
+            actions.style.marginTop = '0px';
+            actions.classList.remove('pt-2');
+        }
+
+        function clearForm(fields) {
+            Object.values(fields).forEach(f => {
+                f.value = '';
+            });
+        }
+
+        // --- CHARTS CONFIGURATION ---
+        const chartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                y: { beginAtZero: true, grid: { color: '#f0f0f0' }, ticks: { font: { weight: 'bold' } } },
+                x: { grid: { display: false }, ticks: { font: { weight: 'bold' } } }
+            }
+        };
+
+        new Chart(document.getElementById('classChart'), {
+            type: 'bar',
+            data: { 
+                labels: ['KELAS X', 'KELAS XI', 'KELAS XII'], 
+                datasets: [{ 
+                    label: 'Volume Izin',
+                    data: [42, 31, 15], 
+                    backgroundColor: '#630000', 
+                    borderRadius: 12,
+                    hoverBackgroundColor: '#8b0000'
+                }] 
+            },
+            options: chartOptions
+        });
+
+        new Chart(document.getElementById('statusChart'), {
+            type: 'doughnut',
+            data: { 
+                labels: ['Verifikasi', 'Selesai'], 
+                datasets: [{ 
+                    data: [12, 88], 
+                    backgroundColor: ['#630000', '#f5f5f4'],
+                    borderColor: '#fff',
+                    borderWidth: 8,
+                    hoverOffset: 20
+                }] 
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '80%',
+                plugins: {
+                    legend: { position: 'bottom', labels: { font: { weight: 'black', size: 10 } } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
